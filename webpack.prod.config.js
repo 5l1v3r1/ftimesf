@@ -1,9 +1,9 @@
-'use strict';
-
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var GhPagesWebpackPlugin = require('gh-pages-webpack-plugin');
+var spawn = require('child_process').spawnSync;
 
 module.exports = {
   entry: {
@@ -13,7 +13,6 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: '[hash].[name].bundle.js',
     chunkFilename: '[hash].[id].bundle.js',
-    publicPath: '/'
   },
   module: {
     loaders: [
@@ -66,14 +65,24 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin('[hash].common.bundle.js'),
     new HtmlWebpackPlugin({
-      title: 'ftimesf',
-      description: '',
+      title: 'F×F',
+      description: 'a small SPA to train multiplication of hexadecimal numbers on your own',
       username: 's-ol',
       filename: 'index.html',
       inject: 'body',
       template: 'index.html_vm',
       favicon: 'img/favicon.ico',
       hash: false
+    }),
+    new GhPagesWebpackPlugin({
+      path: './build',
+      options: {
+        message: 'Update to ' + spawn('git', ['rev-parse', 'HEAD']).stdout,
+        user: {
+          name: 's-ol',
+          email: 's-ol@users.noreply.github.com'
+        }
+      }
     })
   ]
 };
