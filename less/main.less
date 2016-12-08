@@ -1,0 +1,34 @@
+@import "./fonticon";
+@import "./roboto";
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+.hexnum {
+  &:before {
+    content: '0x';
+    display: inline;
+    color: #aaaaaa;
+  }
+
+  .pad {
+    color: #aaaaaa;
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  th, td {
+    padding: 4px 8px;
+  }
+
+  td {
+    border-left: 1px solid #aaaaaa;
+  }
+}
