@@ -50,8 +50,8 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('common.bundle.js'),
     new HtmlWebpackPlugin({
-      title: 'ftimesf',
-      description: '',
+      title: 'F×F',
+      description: 'a small SPA to train multiplication of hexadecimal numbers on your own',
       username: 's-ol',
       filename: 'index.html',
       inject: 'body',

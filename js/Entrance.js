@@ -1,7 +1,7 @@
 import { Splash } from 'splash-screen';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Application from 'js/application/Application';
+import Application from 'js/application';
 
 class Entrance {
   constructor() {}

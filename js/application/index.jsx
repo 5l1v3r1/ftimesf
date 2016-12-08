@@ -15,6 +15,7 @@ class Application extends React.Component {
     this.state = {
       activeTab: 'table',
       series: 2,
+      half: false
     };
   }
 
@@ -31,16 +32,22 @@ class Application extends React.Component {
   onDigitSelected(series) {
     this.setState({
       activeTab: 'series',
-      series,
+      series
     });
   }
 
+  setHalf(event) {
+    const { half } = this.state;
+    event.stopPropagation();
+    this.setState({ half: !half });
+  }
+
   render() {
-    const { activeTab, series } = this.state;
+    const { activeTab, series, half } = this.state;
 
     return (
       <div>
-        <AppBar title="F×F"/>
+        <AppBar title="F×F" />
         <Tabs
           value={activeTab}
           onChange={this.setActiveTab.bind(this)}
@@ -48,6 +55,8 @@ class Application extends React.Component {
           <Tab label="Table" value="table">
             <div className="container">
               <MultiplicationTable
+                half={half}
+                setHalf={this.setHalf.bind(this)}
                 onDigitSelected={this.onDigitSelected.bind(this)}
               />
             </div>
