@@ -47,9 +47,9 @@ module.exports = {
     ];
   },
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     root: [
-      path.resolve(__dirname),
-      path.resolve(__dirname, 'js', 'fw', 'lib')
+      path.resolve(__dirname)
     ]
   },
   plugins: [
@@ -77,7 +77,7 @@ module.exports = {
     new GhPagesWebpackPlugin({
       path: './build',
       options: {
-        message: 'Update to ' + spawn('git', ['rev-parse', 'HEAD']).stdout,
+        message: 'Update to ' + spawn('git', ['log', '-n1', '--format=%h: %s']).stdout,
         user: {
           name: 's-ol',
           email: 's-ol@users.noreply.github.com'

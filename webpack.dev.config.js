@@ -42,9 +42,9 @@ module.exports = {
     ];
   },
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     root: [
-      path.resolve(__dirname),
-      path.resolve(__dirname, 'js', 'fw', 'lib')
+      path.resolve(__dirname)
     ]
   },
   plugins: [

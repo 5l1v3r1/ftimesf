@@ -3,6 +3,7 @@
 
 html, body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 a {
@@ -11,14 +12,22 @@ a {
 
 .hexnum {
   &:before {
-    content: '0x';
     display: inline;
+    content: '0x';
     color: #aaaaaa;
+    font-weight: 200;
   }
 
   .pad {
     color: #aaaaaa;
+    font-weight: 200;
   }
+}
+
+.container {
+  padding: 4% 12%;
+  display: flex;
+  justify-content: space-around;
 }
 
 table {

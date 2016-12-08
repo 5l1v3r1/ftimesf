@@ -6,10 +6,10 @@ require.ensure(['splash-screen/dist/splash.min.css', 'splash-screen'], function(
 require.ensure([
   'less/main.less',
   'splash-screen',
-  './fw/Entrance'
+  './Entrance'
 ], function(require) {
   require('less/main.less');
 
-  var Entrance = require('./fw/Entrance').default;
+  var Entrance = require('./Entrance').default;
   (new Entrance()).run();
 });
