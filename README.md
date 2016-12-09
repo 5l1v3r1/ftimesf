@@ -3,11 +3,13 @@ F×F
 
 F×F (0xF times 0xF) is a small SPA to train multiplication of hexadecimal numbers on your own.
 
+See the running app at [s-ol.github.io/ftimesf](https://s-ol.github.io/ftimesf)!
+
 name
 ----
 in german, when children learn to multiply, the multiplication tables with numbers 1 - 10 they are first taught to learn by hard are called 'kleines Einmaleins' ('*small one-times-one'*).
 
-tunning
+running
 -------
 to test & develop (live reloading):
 
