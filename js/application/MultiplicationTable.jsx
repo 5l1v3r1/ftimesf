@@ -1,10 +1,8 @@
 import React from 'react';
 
-import Toggle from 'material-ui/Toggle';
-
 import { HexNum, digits } from './HexNum';
 
-const MultiplicationTable = ({ onDigitSelected, half = false }) => (
+const MultiplicationTable = ({ onDigitSelected }, { halfedTable }) => (
   <table>
     <tbody>
       <tr className="row">
@@ -20,7 +18,7 @@ const MultiplicationTable = ({ onDigitSelected, half = false }) => (
           <th className="header">
             <HexNum value={a} width={2} onClick={onDigitSelected} />
           </th>
-          {digits.map(b => half && a < b
+          {digits.map(b => halfedTable && a < b
             ? <td key={b} className="empty" />
             : (<td key={b}><HexNum value={a * b} width={2} /></td>)
           )}
@@ -30,9 +28,12 @@ const MultiplicationTable = ({ onDigitSelected, half = false }) => (
   </table>
 );
 
-export default ({ half, setHalf, onDigitSelected }) => (
-  <div>
-    <MultiplicationTable half={half} onDigitSelected={onDigitSelected} />
-    <Toggle value={half} label="Show half only" value={half} onToggle={setHalf} />
-  </div>
-);
+MultiplicationTable.propTypes = {
+  onDigitSelected: React.PropTypes.func.isRequired,
+};
+
+MultiplicationTable.contextTypes = {
+  halfedTable: React.PropTypes.bool,
+};
+
+export default MultiplicationTable;

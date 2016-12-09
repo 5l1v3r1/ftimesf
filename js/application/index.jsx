@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { ToolbarGroup } from 'material-ui/Toolbar';
 
+import SettingsDrawer from './SettingsDrawer';
 import MultiplicationTable from './MultiplicationTable';
 import MultiplicationSeries from './MultiplicationSeries';
 
@@ -15,13 +16,19 @@ class Application extends React.Component {
     this.state = {
       activeTab: 'table',
       series: 2,
-      half: false
+      halfedTable: true,
+      hexFormat: 'c',
     };
   }
 
   getChildContext() {
+    const { hexFormat, halfedTable } = this.state;
     return {
-      muiTheme: getMuiTheme(lightTheme)
+      muiTheme: getMuiTheme(lightTheme),
+      hexFormat,
+      setHexFormat: this.setHexFormat.bind(this),
+      halfedTable,
+      setHalfedTable: this.setHalfedTable.bind(this)
     };
   }
 
@@ -36,18 +43,37 @@ class Application extends React.Component {
     });
   }
 
-  setHalf(event) {
+  setHalf(e) {
     const { half } = this.state;
-    event.stopPropagation();
+    e.stopPropagation();
     this.setState({ half: !half });
   }
 
+  toggleSettings() {
+    this.refs.settings.toggle();
+  }
+
+  setHexFormat(hexFormat) {
+    this.setState({ hexFormat });
+  }
+
+  setHalfedTable(halfedTable) {
+    this.setState({ halfedTable });
+  }
+
   render() {
-    const { activeTab, series, half } = this.state;
+    const {
+      activeTab,
+      series,
+    } = this.state;
 
     return (
       <div>
-        <AppBar title="F×F" />
+        <SettingsDrawer ref="settings" />
+        <AppBar
+          title="F×F"
+          onLeftIconButtonTouchTap={this.toggleSettings.bind(this)}
+        />
         <Tabs
           value={activeTab}
           onChange={this.setActiveTab.bind(this)}
@@ -55,8 +81,6 @@ class Application extends React.Component {
           <Tab label="Table" value="table">
             <div className="container">
               <MultiplicationTable
-                half={half}
-                setHalf={this.setHalf.bind(this)}
                 onDigitSelected={this.onDigitSelected.bind(this)}
               />
             </div>
@@ -81,7 +105,11 @@ class Application extends React.Component {
 }
 
 Application.childContextTypes = {
-  muiTheme: React.PropTypes.object
+  muiTheme: React.PropTypes.object,
+  hexFormat: React.PropTypes.string,
+  setHexFormat: React.PropTypes.func,
+  halfedTable: React.PropTypes.bool,
+  setHalfedTable: React.PropTypes.func
 };
 
 export default Application;
