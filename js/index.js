@@ -6,7 +6,7 @@ require.ensure(['splash-screen/dist/splash.min.css', 'splash-screen'], function(
 require.ensure([
   'less/main.less',
   'splash-screen',
-  './Entrance'
+  './Entrance',
 ], function(require) {
   require('less/main.less');
 

@@ -32,7 +32,6 @@ class Entrance {
     this._destroySplash();
     this.launch();
   }
-
 }
 
 export default Entrance;

@@ -23,13 +23,13 @@ class SettingsDrawer extends React.Component {
     const { open } = this.state;
     const {
       hexFormat, setHexFormat,
-      halfedTable, setHalfedTable
+      halfedTable, setHalfedTable,
     } = this.context;
 
     const prefixes = [
       ['None', null],
       ['C-Style', 'c'],
-      ['ASM-Style', 'asm']
+      ['ASM-Style', 'asm'],
     ];
 
     return (

@@ -28,7 +28,7 @@ class Application extends React.Component {
       hexFormat,
       setHexFormat: this.setHexFormat.bind(this),
       halfedTable,
-      setHalfedTable: this.setHalfedTable.bind(this)
+      setHalfedTable: this.setHalfedTable.bind(this),
     };
   }
 
@@ -39,7 +39,7 @@ class Application extends React.Component {
   onDigitSelected(series) {
     this.setState({
       activeTab: 'series',
-      series
+      series,
     });
   }
 
@@ -109,7 +109,7 @@ Application.childContextTypes = {
   hexFormat: React.PropTypes.string,
   setHexFormat: React.PropTypes.func,
   halfedTable: React.PropTypes.bool,
-  setHalfedTable: React.PropTypes.func
+  setHalfedTable: React.PropTypes.func,
 };
 
 export default Application;

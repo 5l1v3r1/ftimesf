@@ -30,5 +30,5 @@ HexNum.propTypes = {
 };
 
 HexNum.contextTypes = {
-  hexFormat: React.PropTypes.string
+  hexFormat: React.PropTypes.string,
 };

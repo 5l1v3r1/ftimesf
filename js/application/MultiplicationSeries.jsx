@@ -27,4 +27,9 @@ const MultiplicationSeries = ({ digit, onDigitSelected }) => (
   </table>
 );
 
+MultiplicationSeries.propTypes = {
+  digit: React.PropTypes.number.isRequired,
+  onDigitSelected: React.PropTypes.func.isRequired,
+};
+
 export default MultiplicationSeries;
