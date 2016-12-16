@@ -59,24 +59,18 @@ class Application extends React.Component {
           onChange={this.setActiveTab.bind(this)}
         >
           <Tab label="Table" value="table">
-            <div className="container">
-              <MultiplicationTable
-                onDigitSelected={this.onDigitSelected.bind(this)}
-              />
-            </div>
+            <MultiplicationTable
+              onDigitSelected={this.onDigitSelected.bind(this)}
+            />
           </Tab>
           <Tab label="Series" value="series">
-            <div className="container">
-              <MultiplicationSeries
-                digit={series}
-                onDigitSelected={this.onDigitSelected.bind(this)}
-              />
-            </div>
+            <MultiplicationSeries
+              digit={series}
+              onDigitSelected={this.onDigitSelected.bind(this)}
+            />
           </Tab>
           <Tab label="Test" value="test">
-            <div className="container">
               @TODO: add random calculation test (w/ selectable max number size?)
-            </div>
           </Tab>
         </Tabs>
       </div>

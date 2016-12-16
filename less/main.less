@@ -38,9 +38,9 @@ a {
 }
 
 .container {
-  padding: 4% 12%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  padding: 4% 12%;
 }
 
 table {
@@ -53,4 +53,8 @@ table {
   td:not(.empty) {
     border-left: 1px solid #aaaaaa;
   }
+}
+
+h1 > .dropdown {
+  font-size: inherit !important;
 }
