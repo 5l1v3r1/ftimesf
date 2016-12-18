@@ -50,8 +50,16 @@ table {
     padding: 4px 8px;
   }
 
+  tr:first-of-type .header {
+    border-bottom: 1px solid #aaaaaa;
+  }
+
   td:not(.empty) {
     border-left: 1px solid #aaaaaa;
+
+    &.fullgrid {
+      border-bottom: 1px solid #aaaaaa;
+    }
   }
 }
 

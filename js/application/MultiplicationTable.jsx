@@ -17,7 +17,7 @@ const MultiplicationTable = ({ onDigitSelected }, { halfedTable }) => (
         </tr>
         {digits.map(a =>
           <tr key={a} className="row">
-            <th className="header">
+            <th>
               <HexNum value={a} width={2} onClick={onDigitSelected} />
             </th>
             {digits.map(b => halfedTable && a < b

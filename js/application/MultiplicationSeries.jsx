@@ -33,7 +33,7 @@ const MultiplicationSeries = ({ digit, onDigitSelected }) => (
             <HexNum value={digit} />
           </th>
           {digits.map(b =>
-            <td key={b}>
+            <td key={b} className="fullgrid">
               <HexNum value={digit * b} width={2} />
             </td>
           )}
