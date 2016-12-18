@@ -11,6 +11,7 @@ import settingsStore from './settingsStore';
 import SettingsDrawer from './SettingsDrawer';
 import MultiplicationTable from './MultiplicationTable';
 import MultiplicationSeries from './MultiplicationSeries';
+import Exerciser from './Exerciser';
 
 class Application extends React.Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class Application extends React.Component {
             />
           </Tab>
           <Tab label="Test" value="test">
-              @TODO: add random calculation test (w/ selectable max number size?)
+            <Exerciser />
           </Tab>
         </Tabs>
       </div>

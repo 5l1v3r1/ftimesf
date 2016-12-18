@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TextField from 'material-ui/TextField';
+
 export const digits = Array.from(Array(16), (_, n) => n+1);
 
 export const HexNum = ({ value, width, onClick }, { hexFormat }) => {
@@ -30,5 +32,17 @@ HexNum.propTypes = {
 };
 
 HexNum.contextTypes = {
+  hexFormat: React.PropTypes.string,
+};
+
+export const HexNumField = (props, { hexFormat }) => (
+  <span
+    className={'hexnum' + (hexFormat ? ` hexfmt-${hexFormat}` : '')}
+  >
+    <TextField {...props} />
+  </span>
+);
+
+HexNumField.contextTypes = {
   hexFormat: React.PropTypes.string,
 };

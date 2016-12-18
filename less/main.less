@@ -64,5 +64,56 @@ table {
 }
 
 h1 > .dropdown {
+  margin-top: -9px;
   font-size: inherit !important;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.shortinput {
+  width: 80px !important;
+  font-size: inherit !important;
+}
+
+.answer {
+  padding: 12px;
+
+  &:before {
+    display: inline-block;
+    margin-right: 0.5em;
+    content: 'correct!';
+    color: green;
+  }
+
+  &.incorrect {
+    &:before {
+      content: 'nope!';
+      color: red;
+    }
+  }
+}
+
+.fade-enter {
+  opacity: 0.01;
+
+  &.fade-enter-active {
+    opacity: 1;
+  }
+}
+
+.fade-leave {
+  opacity: 1;
+
+  &.fade-leave-active {
+    opacity: 0.01;
+  }
+}
+
+.exercise {
+  i {
+    font-style: normal;
+    margin: 0 0.3em;
+  }
 }
