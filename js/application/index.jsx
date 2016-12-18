@@ -6,18 +6,23 @@ import AppBar from 'material-ui/AppBar';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { ToolbarGroup } from 'material-ui/Toolbar';
 
+import { restoreState, storeState } from '../storage';
+import settingsStore from './settingsStore';
 import SettingsDrawer from './SettingsDrawer';
 import MultiplicationTable from './MultiplicationTable';
 import MultiplicationSeries from './MultiplicationSeries';
-import settingsStore from './settingsStore';
 
 class Application extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = restoreState('appstate', {
       activeTab: 'table',
       series: 2,
-    };
+    });
+  }
+
+  componentWillUpdate(props, state) {
+    storeState('appstate', state);
   }
 
   getChildContext() {

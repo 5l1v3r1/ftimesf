@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { restoreState, storeState } from '../storage';
+
 const settingsStore = WrappedComponent => {
   class SettingsStore extends React.Component {
     constructor(props) {
@@ -8,11 +10,14 @@ const settingsStore = WrappedComponent => {
       this.setHexFormat = this.setHexFormat.bind(this);
       this.setHalfedTable = this.setHalfedTable.bind(this);
 
-
-      this.state = {
+      this.state = restoreState('settings', {
         halfedTable: false,
         hexFormat: 'c',
-      };
+      });
+    }
+
+    componentWillUpdate(props, state) {
+      storeState('settings', state);
     }
 
     getChildContext() {
