@@ -7,8 +7,8 @@ import { HexNum, HexNumField, digits } from './HexNum';
 const choice = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 export default class Exerciser extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = Object.assign(
       {
         last: null,
@@ -19,8 +19,22 @@ export default class Exerciser extends React.Component {
   }
 
   createExercise() {
-    const a = choice(digits);
-    const b = choice(digits);
+    const { allowedFactors } = this.context;
+
+    const factors = [];
+    for (let i = 1; i < allowedFactors.length; i++)
+      if (allowedFactors[i]) factors.push(i);
+
+    if (factors.length === 0) {
+      return {
+        a: 1, b: 1,
+        operation: '×',
+        result: 1,
+      };
+    }
+
+    const a = choice(factors);
+    const b = choice(factors);
 
     return {
       a, b,
@@ -106,3 +120,7 @@ export default class Exerciser extends React.Component {
     );
   }
 }
+
+Exerciser.contextTypes = {
+  allowedFactors: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired,
+};

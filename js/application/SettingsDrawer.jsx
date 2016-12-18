@@ -4,6 +4,9 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
+import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+
+import { HexNum, digits } from './HexNum';
 
 class SettingsDrawer extends React.Component {
   constructor(props) {
@@ -24,6 +27,7 @@ class SettingsDrawer extends React.Component {
     const {
       hexFormat, setHexFormat,
       halfedTable, setHalfedTable,
+      allowedFactors, setAllowedFactor,
     } = this.context;
 
     const prefixes = [
@@ -48,11 +52,25 @@ class SettingsDrawer extends React.Component {
             insetChildren
           />
         )}
-        <Divider />
+        <Subheader>Table Options</Subheader>
         <MenuItem
           primaryText="Show halfed Table"
           checked={halfedTable}
           onTouchTap={e => { e.stopPropagation(); setHalfedTable(!halfedTable); }}
+          insetChildren
+        />
+        <Subheader>Test Options</Subheader>
+        <MenuItem
+          primaryText="Allowed Factors"
+          rightIcon={<ArrowDropRight />}
+          menuItems={digits.map(a =>
+            <MenuItem
+              primaryText={<HexNum value={a} width={2} />}
+              checked={allowedFactors[a]}
+              onTouchTap={e => { e.stopPropagation(); setAllowedFactor(a, !allowedFactors[a]); }}
+              insetChildren
+            />
+          )}
           insetChildren
         />
       </Drawer>
@@ -65,6 +83,8 @@ SettingsDrawer.contextTypes = {
   setHexFormat: React.PropTypes.func.isRequired,
   halfedTable: React.PropTypes.bool,
   setHalfedTable: React.PropTypes.func.isRequired,
+  allowedFactors: React.PropTypes.arrayOf(React.PropTypes.bool).isRequired,
+  setAllowedFactor: React.PropTypes.func.isRequired,
 };
 
 export default SettingsDrawer;
