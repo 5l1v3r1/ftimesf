@@ -72,7 +72,7 @@ module.exports = {
       inject: 'body',
       template: 'index.html_vm',
       favicon: 'img/favicon.ico',
-      hash: false
+      hash: true
     }),
     new GhPagesWebpackPlugin({
       path: './build',
