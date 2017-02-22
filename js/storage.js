@@ -1,9 +1,7 @@
 export const checkVersion = version => {
   try {
     const lastVersion = localStorage.getItem('_version');
-    if (version !== lastVersion) {
-      localStorage.clear();
-    }
+    if (version !== lastVersion) localStorage.clear();
     localStorage.setItem('_version', version);
     return true;
   }
@@ -25,7 +23,7 @@ export const storeState = (key, state) => {
 export const restoreState = (key, defaultState) => {
   try {
     const data = window.localStorage.getItem(key);
-    return data ? JSON.parse(data) : defaultState;
+    return Object.assign({}, defaultState, data && JSON.parse(data));
   }
   catch (e) {
     return defaultState;
